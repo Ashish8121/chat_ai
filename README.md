@@ -36,5 +36,3 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
 =======
-# chat_AI
->>>>>>> 7ac495c405ccef2e05c6134426f6bc3ea46a2e22
