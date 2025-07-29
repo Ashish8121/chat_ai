@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div className="text-lg">
       <h1>Hello world</h1>
-      You hello  deployed on my website
-    </div>
+      <h1>Hello again </h1>
+   </div>
   );
 }
