@@ -1,5 +1,6 @@
-import { ThemeProvider } from './context/ThemeContext'
-import './globals.css'
+import './globals.css';
+import { ThemeProvider } from './context/ThemeContext';
+import { Providers } from './store/provider';
 
 export const metadata = {
   title: 'Login Page - Beautiful Authentication',
@@ -11,10 +12,10 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
-        <ThemeProvider>
-          {children}
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider>{children}</ThemeProvider>
+        </Providers>
       </body>
     </html>
-  )
+  );
 }

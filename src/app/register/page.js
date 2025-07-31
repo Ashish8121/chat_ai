@@ -1,5 +1,4 @@
 'use client';
-import { registerUser } from '@/lib/api'; // make sure path is correct
 import { useRouter } from 'next/navigation'; // for redirect after register
 
 import { useState } from 'react';
@@ -16,34 +15,46 @@ export default function RegisterPage() {
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-const router = useRouter(); // for redirect
-
-const handleSubmit = async (e) => {
+  const router = useRouter(); // for redirect
+  const handleSubmit = async (e) => {
   e.preventDefault();
   setIsLoading(true);
 
-  if (formData.password !== formData.confirmPassword) {
-    alert("❌ Passwords do not match!");
-    setIsLoading(false);
-    return;
-  }
+  // Combine first and last name
+  const fullName = `${formData.firstName} ${formData.lastName}`;
 
   try {
-    await registerUser({
-      username: `${formData.firstName} ${formData.lastName}`,
-      email: formData.email,
-      password: formData.password,
+    const response = await fetch('https://chat-ai-backend-a8ia.onrender.com/add_user', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        name: fullName,
+        email: formData.email,
+        password: formData.password,
+      }),
     });
 
-    alert("✅ Account created successfully!");
-    router.push('/'); // redirect to login/home
-  } catch (err) {
-    const detail = err.response?.data?.detail || 'Something went wrong';
-    alert("❌ " + detail);
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.detail || 'Failed to register');
+    }
+
+    // ✅ Optional: store token or redirect after successful registration
+    console.log('Registration successful:', data);
+
+    // Redirect to login or homepage
+    router.push('/');
+  } catch (error) {
+    console.error('Registration error:', error.message);
+    alert(error.message);
   } finally {
     setIsLoading(false);
   }
 };
+
 
   const handleChange = (e) => {
     setFormData({
