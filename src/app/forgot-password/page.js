@@ -41,7 +41,7 @@ export default function ForgotPasswordPage() {
             <div className="space-y-4">
               <Link
                 href="/"
-                className="btn-primary inline-block py-3 px-6 rounded-lg text-white font-medium"
+                className="btn-primary inline-block py-3 px-6 rounded-lg text-gray-700 dark:text-white font-medium"
               >
                 Back to Sign In
               </Link>
@@ -96,7 +96,7 @@ export default function ForgotPasswordPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="btn-primary w-full py-3 px-6 rounded-lg text-white font-medium flex items-center justify-center"
+              className="btn-primary w-full py-3 px-6 rounded-lg text-gray-700 dark:text-white font-medium flex items-center justify-center"
             >
               {isLoading ? (
                 <>

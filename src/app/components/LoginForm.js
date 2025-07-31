@@ -52,7 +52,7 @@ export default function LoginForm() {
           <h1 className="text-3xl font-black mb-2 bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent interactive-text">
             Welcome Back
           </h1>
-          <p className="text-gray-600 dark:text-gray-300 font-medium">
+          <p className="text-theme-main font-medium">
             Sign in to your account to continue
           </p>
         </div>
@@ -65,7 +65,7 @@ export default function LoginForm() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="email" className="block text-sm font-semibold mb-3 text-gray-700 dark:text-gray-300">
+            <label htmlFor="email" className="block text-sm font-semibold mb-3 text-theme-main">
               Email Address
             </label>
             <input
@@ -81,7 +81,7 @@ export default function LoginForm() {
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-semibold mb-3 text-gray-700 dark:text-gray-300">
+            <label htmlFor="password" className="block text-sm font-semibold mb-3 text-theme-main">
               Password
             </label>
             <div className="relative">
@@ -117,7 +117,7 @@ export default function LoginForm() {
           <div className="flex items-center justify-between">
             <label className="flex items-center cursor-pointer group">
               <input type="checkbox" className="enhanced-checkbox mr-3" />
-              <span className="text-sm font-medium text-gray-700 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors duration-200">
+              <span className="text-sm font-medium text-theme-main group-hover:text-gray-900 dark:group-hover:text-gray-100 transition-colors duration-200">
                 Remember me
               </span>
             </label>
@@ -132,7 +132,7 @@ export default function LoginForm() {
           <button
             type="submit"
             disabled={isLoading}
-            className="btn-primary w-full py-2 px-4 rounded-lg text-white font-semibold flex items-center justify-center focus-ring"
+            className="btn-primary w-full py-2 px-4 rounded-lg text-gray-700 dark:text-white font-semibold flex items-center justify-center focus-ring"
           >
             {isLoading ? (
               <>
@@ -146,7 +146,7 @@ export default function LoginForm() {
         </form>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">
+          <p className="text-sm text-theme-main font-medium">
             Don't have an account?{' '}
             <Link
               href="/register"
@@ -158,13 +158,10 @@ export default function LoginForm() {
         </div>
 
         <div className="mt-8">
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-gray-300 dark:border-gray-600"></div>
-            </div>
-            <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-white dark:bg-gray-800 text-gray-500 font-medium">Or continue with</span>
-            </div>
+          <div className="relative flex items-center justify-center my-6">
+            <div className="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
+            <span className="px-4 text-theme-main font-medium">Or continue with</span>
+            <div className="flex-grow border-t border-gray-300 dark:border-gray-600"></div>
           </div>
 
           <div className="mt-6">

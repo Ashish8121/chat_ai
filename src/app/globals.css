@@ -11,33 +11,33 @@ html {
 
 /* Theme Variables */
 :root {
-  --primary-color: #6366f1;
-  --secondary-color: #4f46e5;
-  --accent-color: #f59e0b;
-  --text-primary: #1f2937;
-  --text-secondary: #6b7280;
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --border-color: #e2e8f0;
+  /* Light Theme Colors */
+  --primary-color: #6366f1;      /* Indigo */
+  --secondary-color: #4f46e5;    /* Deep Indigo */
+  --accent-color: #f59e0b;       /* Amber/Orange */
+  --text-primary: #1f2937;       /* Main text: very dark gray */
+  --text-secondary: #94a0b6;     /* Secondary text: medium gray */
+  --border-color: #e2e8f0;       /* Light border gray */
   --shadow-color: rgba(0, 0, 0, 0.08);
-  --card-bg: #ffffff;
-  --input-bg: #ffffff;
-  --button-hover: #f8fafc;
+  --card-bg: #ffffff;            /* Card background: white */
+  --input-bg: #ffffff;           /* Input background: white */
+  --button-hover: #04111d;       /* Button hover: very light gray */
 }
 
 [data-theme="dark"] {
-  --primary-color: #818cf8;
-  --secondary-color: #6366f1;
-  --accent-color: #fbbf24;
-  --text-primary: #f1f5f9;
-  --text-secondary: #cbd5e1;
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --border-color: #334155;
+  /* Dark Theme Colors */
+  --primary-color: #818cf8;      /* Lighter Indigo */
+  --secondary-color: #6366f1;    /* Indigo */
+  --accent-color: #fbbf24;       /* Yellow/Gold */
+  --text-primary: #f1f5f9;       /* Main text: very light gray */
+  --text-secondary: #cbd5e1;     /* Secondary text: light gray */
+  --bg-primary: #0f172a;         /* Background: very dark blue/gray */
+  --bg-secondary: #1e293b;       /* Background: dark blue/gray */
+  --border-color: #334155;       /* Dark border gray */
   --shadow-color: rgba(0, 0, 0, 0.3);
-  --card-bg: #1e293b;
-  --input-bg: #334155;
-  --button-hover: #334155;
+  --card-bg: #1e293b;            /* Card background: dark blue/gray */
+  --input-bg: #334155;           /* Input background: dark gray */
+  --button-hover: #334155;       /* Button hover: dark gray */
 }
 
 /* Global Styles */
@@ -380,4 +380,11 @@ html {
 ::-moz-selection {
   background: var(--primary-color);
   color: white;
+}
+
+.text-theme-main {
+  color: #000;
+}
+[data-theme="dark"] .text-theme-main {
+  color: #d1d5db;
 }

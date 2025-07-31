@@ -205,7 +205,7 @@ const handleSubmit = async (e) => {
             <button
               type="submit"
               disabled={isLoading}
-              className="btn-primary w-full py-3 px-6 rounded-lg text-white font-medium flex items-center justify-center"
+              className="btn-primary w-full py-3 px-6 rounded-lg text-gray-700 dark:text-white font-medium flex items-center justify-center"
             >
               {isLoading ? (
                 <>
