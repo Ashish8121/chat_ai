@@ -21,28 +21,21 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 min-h-screen flex flex-col">
-        {/* Top Section - CHATAI Logo */}
-        <div className="flex justify-center items-center py-12">
+      <div className="min-h-screen flex flex-col justify-center items-center">
+        <div className="w-full flex justify-center items-center pb-8">
           <div className="animate-slide-in-right text-center">
             <h1 className="text-5xl lg:text-6xl font-black tracking-tight cursor-pointer group">
               <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent transition-all duration-500 group-hover:from-pink-600 group-hover:via-purple-600 group-hover:to-indigo-600 group-hover:scale-105 group-hover:drop-shadow-2xl inline-block transform hover:rotate-1 hover:skew-y-1 interactive-text">
                 CHATAI
               </span>
             </h1>
-           
           </div>
         </div>
-
-        {/* Center Section - Login Form */}
-        <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-center px-4 sm:px-6 lg:px-8 w-full">
           <div className="w-full max-w-sm">
             <LoginForm />
           </div>
         </div>
-
-        {/* Bottom Section - Features */}
-        
       </div>
 
       {/* Floating Elements */}
