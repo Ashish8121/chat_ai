@@ -25,14 +25,12 @@ export default function Home() {
         {/* Top Section - CHATAI Logo */}
         <div className="flex justify-center items-center py-12">
           <div className="animate-slide-in-right text-center">
-            <h1 className="text-7xl lg:text-8xl font-black tracking-tight cursor-pointer group">
+            <h1 className="text-5xl lg:text-6xl font-black tracking-tight cursor-pointer group">
               <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 bg-clip-text text-transparent transition-all duration-500 group-hover:from-pink-600 group-hover:via-purple-600 group-hover:to-indigo-600 group-hover:scale-105 group-hover:drop-shadow-2xl inline-block transform hover:rotate-1 hover:skew-y-1 interactive-text">
                 CHATAI
               </span>
             </h1>
-            <p className="text-2xl text-gray-600 dark:text-gray-300 mt-6 font-semibold tracking-wide hover:text-indigo-600 dark:hover:text-indigo-400 transition-all duration-300 cursor-pointer interactive-link">
-              Your AI-Powered Chat Experience
-            </p>
+           
           </div>
         </div>
 
