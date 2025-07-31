@@ -22,7 +22,7 @@ export default function ForgotPasswordPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="min-m-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="animate-fade-in-up">
           <div className="card rounded-2xl p-8 max-w-md w-full mx-auto text-center">
             <div className="mb-6">
