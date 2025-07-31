@@ -38,7 +38,7 @@ export default function Home() {
 
         {/* Center Section - Login Form */}
         <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-          <div className="w-full max-w-md">
+          <div className="w-full max-w-sm">
             <LoginForm />
           </div>
         </div>
@@ -87,7 +87,7 @@ export default function Home() {
       {/* Footer */}
       <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 text-center">
         <p className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-300 transition-colors duration-300 cursor-pointer font-medium interactive-link">
-          © 2024 CHATAI. All rights reserved.
+          © 2025 CHATAI. All rights reserved.
         </p>
       </div>
     </div>
