@@ -59,7 +59,7 @@ function ProfileModal({ open, onClose, user, onLogout }) {
             </div>
 
             <div>
-              <div className="text-sm font-semibold mb-1">Contact</div>
+              <div className="text-sm font-semibold mb-1">Mail</div>
               <div className="rounded-lg border theme-border p-3 theme-surface">
                 <p className="text-sm">{userEmail}</p>
               </div>
