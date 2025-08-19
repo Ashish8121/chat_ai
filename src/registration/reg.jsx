@@ -8,12 +8,14 @@ function Registration() {
   const [email, setEmail] = useState();
   const [password, setPassw] = useState();
   const [alert, setAlert] = useState('');
+  const [loading, setLoading] = useState(false);
 
   // ✅ Define your API base URL here
   const BASE_URL = "https://chat-ai-backend-a8ia.onrender.com";
 
   const handlSubmit = (e) => {
     e.preventDefault();
+    setLoading(true); // start loading
 
     axios.post(`${BASE_URL}/add_user`, { name, email, password })
       .then(res => {
@@ -27,6 +29,9 @@ function Registration() {
         } else {
           console.error('Error adding user:', err);
         }
+      })
+      .finally(() => {
+        setLoading(false); // stop loading
       });
   };
 
@@ -61,44 +66,44 @@ function Registration() {
       {/* Registration box */}
       <div className="flex items-center justify-end min-h-screen">
         <div
-          className="bg-white p-10 shadow-2xl w-[40rem] max-w-sm mr-12"
+          className="theme-surface p-10 shadow-2xl w-[40rem] max-w-sm mr-12 border theme-border rounded-xl"
           style={{ minHeight: '500px' }}
         >
-          <h2 className="text-3xl font-bold text-[var(--color-primary-dark)] text-center mb-10">
-            Registration
-          </h2>
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-3xl font-bold theme-text-primary">Registration</h2>
+          </div>
 
           <form onSubmit={handlSubmit} className="space-y-6">
             <div>
-              <label className="block text-left text-[var(--color-secondary)] mb-1">Name</label>
+              <label className="block text-left theme-text-secondary mb-1">Name</label>
               <input
                 type="text"
                 required
                 placeholder="Enter your name"
                 onChange={(e) => setName(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-light)]"
+                className="w-full border theme-border theme-surface theme-text-primary px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-light)]"
               />
             </div>
 
             <div>
-              <label className="block text-left text-[var(--color-secondary)] mb-1">Email</label>
+              <label className="block text-left theme-text-secondary mb-1">Email</label>
               <input
                 type="email"
                 required
                 placeholder="Enter your email"
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-light)]"
+                className="w-full border theme-border theme-surface theme-text-primary px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-light)]"
               />
             </div>
 
             <div>
-              <label className="block text-left text-[var(--color-secondary)] mb-1">Password</label>
+              <label className="block text-left theme-text-secondary mb-1">Password</label>
               <input
                 type="password"
                 required
                 placeholder="Enter your password"
                 onChange={(e) => setPassw(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-light)]"
+                className="w-full border theme-border theme-surface theme-text-primary px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-light)]"
               />
             </div>
 
@@ -106,13 +111,41 @@ function Registration() {
 
             <button
               type="submit"
-              className="w-full bg-[var(--color-primary-dark)] text-white py-2 rounded-lg hover:bg-[var(--color-primary)] transition"
+              disabled={loading}
+              className={`w-full py-2 rounded-lg transition flex justify-center items-center ${
+                loading
+                  ? "bg-gray-400 cursor-not-allowed"
+                  : "bg-[var(--color-primary-dark)] hover:bg-[var(--color-primary)] text-white"
+              }`}
             >
-              Register
+              {loading ? (
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  ></path>
+                </svg>
+              ) : (
+                "Register"
+              )}
             </button>
           </form>
 
-          <p className="mt-8 text-center text-[var(--color-secondary)]">
+          <p className="mt-8 text-center theme-text-secondary">
             Already have an account?{' '}
             <button onClick={handleLogin} className="text-[var(--color-primary)] hover:underline">
               Login

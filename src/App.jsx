@@ -23,7 +23,7 @@ function App() {
       {/* Top Bar */}
       <div className="mt-2 w-full flex justify-between items-center px-4 py-3 bg-[var(--color-primary)] bg-opacity-190 backdrop-blur-md shadow-md rounded-lg z-20">
         <h1 className="text-2xl font-extrabold text-white tracking-wide">Friendly AI</h1>
-        <div className="flex space-x-4">
+        <div className="flex items-center space-x-2 sm:space-x-4">
           <button
             onClick={handleLogin}
             className="bg-white text-[var(--color-primary-dark)] px-5 py-2 rounded-lg hover:bg-gray-200 transition font-medium shadow-md"

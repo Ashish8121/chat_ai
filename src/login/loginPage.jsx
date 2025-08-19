@@ -11,11 +11,15 @@ function LoginPage() {
   const [password, setPassw] = useState('');
   const [alert, setMessage] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  const [loading, setLoading] = useState(false); // 🔥 new loading state
+
   const dispatch = useDispatch();
   const API_BASE_URL = "https://chat-ai-backend-a8ia.onrender.com";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true); // 🔥 start loading
     try {
       const res = await axios.post(`${API_BASE_URL}/check_user`, { email, password });
 
@@ -23,7 +27,7 @@ function LoginPage() {
         setMessage(res.data.error);
       } else {
         dispatch(setUser({
-          id: res.data.id,  // ✅ ensure id is included
+          id: res.data.id,  
           name: res.data.name,
           email: res.data.email,
           token: res.data.token,
@@ -33,6 +37,8 @@ function LoginPage() {
     } catch (err) {
       console.error('Login error:', err);
       setMessage('Server error. Please try again later.');
+    } finally {
+      setLoading(false); // 🔥 stop loading
     }
   };
 
@@ -67,32 +73,32 @@ function LoginPage() {
       {/* Login box */}
       <div className="flex items-center justify-end min-h-screen">
         <div
-          className="bg-white p-10 shadow-3xl w-[40rem] max-w-sm mr-12"
+          className="theme-surface p-10 shadow-3xl w-[40rem] max-w-sm mr-12 border theme-border rounded-xl"
           style={{ minHeight: '400px' }}
         >
-          <h2 className="text-3xl font-bold text-[var(--color-primary-dark)] text-center mb-10">
-            Login to AI
-          </h2>
-
+          <div className="flex items-center justify-between mb-6">
+            <h2 className="text-3xl font-bold theme-text-primary">Login to AI</h2>
+          </div>
+          
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label className="block text-left text-[var(--color-secondary)] mb-1">Email</label>
+              <label className="block text-left theme-text-secondary mb-1">Email</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-light)]"
+                className="w-full border theme-border theme-surface theme-text-primary px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-light)]"
                 required
               />
             </div>
 
             <div className="relative">
-              <label className="block text-left text-[var(--color-secondary)] mb-1">Password</label>
+              <label className="block text-left theme-text-secondary mb-1">Password</label>
               <input
                 type={showPassword ? 'text' : 'password'}
                 value={password}
                 onChange={(e) => setPassw(e.target.value)}
-                className="w-full border border-gray-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-light)]"
+                className="w-full border theme-border theme-surface theme-text-primary px-4 py-2 focus:outline-none focus:ring-2 focus:ring-[var(--color-primary-light)]"
                 required
               />
               <button
@@ -114,13 +120,37 @@ function LoginPage() {
 
             <button
               type="submit"
-              className="w-full bg-[var(--button-bg)] text-[var(--button-text)] py-2 rounded-lg hover:bg-[var(--button-bg-hover)] transition"
+              disabled={loading} // 🔥 disable while loading
+              className="w-full bg-[var(--button-bg)] text-[var(--button-text)] py-2 rounded-lg hover:bg-[var(--button-bg-hover)] transition flex items-center justify-center"
             >
-              Login
+              {loading ? (
+                <svg
+                  className="animate-spin h-5 w-5 text-white"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  ></path>
+                </svg>
+              ) : (
+                "Login"
+              )}
             </button>
           </form>
 
-          <p className="mt-8 text-center text-[var(--color-secondary)]">
+          <p className="mt-8 text-center theme-text-secondary">
             Don't have an account?{' '}
             <button onClick={handleReg} className="text-[var(--color-primary)] hover:underline">
               Register

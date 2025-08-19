@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { PowerIcon } from '@heroicons/react/24/outline';
 import { FaRegUser } from "react-icons/fa";
 import { useSelector } from 'react-redux';
+import ThemeButton from '../components/ThemeButton';
 
 function TopBar({ handleLogout, name }) {
   const user = useSelector((state) => state.user);
@@ -56,7 +57,9 @@ function TopBar({ handleLogout, name }) {
       </span>
 
       {/* Right: Account owner slider + logout */}
-      <div className="flex items-center space-x-4">
+      <div className="flex items-center space-x-2 sm:space-x-4">
+        {/* Theme toggle */}
+        <ThemeButton className="bg-white/20 hover:bg-white/30" />
 
         {/* Account owner sliding button */}
         <div

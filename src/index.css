@@ -13,3 +13,10 @@
   background-size: 400% 400%;
   animation: gradientBG 10s ease infinite;
 }
+
+/* Utility bridges to theme tokens */
+.theme-surface { background-color: var(--surface); }
+.theme-surface-elevated { background-color: var(--surface-elevated); }
+.theme-text-primary { color: var(--text-primary); }
+.theme-text-secondary { color: var(--text-secondary); }
+.theme-border { border-color: var(--border); }

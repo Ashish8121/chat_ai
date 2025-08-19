@@ -25,7 +25,7 @@ function Account() {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const API_BASE_URL = "http://127.0.0.1:5000";
+  const API_BASE_URL = "https://chat-ai-backend-a8ia.onrender.com";
 
   useEffect(() => {
     if (!token) navigate('/login');
@@ -147,7 +147,7 @@ function Account() {
   
 
   return (
-    <div className="h-screen w-screen flex bg-gray-200">
+    <div className="h-screen w-screen flex theme-surface-elevated">
       <Sidebar
         onUserSelect={handleUserSelect}
         selectedUser={selectedUser}
@@ -158,7 +158,7 @@ function Account() {
       <div className="w-[79%] flex flex-col p-3">
         <TopBar handleLogout={handleLogout} name={selectedUser ? selectedUser.name : null} />
 
-        <div className="flex-1 overflow-y-auto mt-1.5 mb-1.5 p-4 bg-white rounded-lg shadow-xl">
+        <div className="flex-1 overflow-y-auto mt-1.5 mb-1.5 p-4 theme-surface rounded-lg shadow-xl border theme-border">
           {selectedUser ? (
             <>
               <h2 className="text-center font-semibold text-lg mb-3">
@@ -168,26 +168,28 @@ function Account() {
               {messages.map((msg, index) => {
   const isOwnMessage = msg.sender_id === currentUserId;
   const isAiMessage = msg.is_ai;
+  const bubbleBase = isOwnMessage
+    ? (isAiMessage
+        ? 'bg-green-500 text-white'
+        : 'bg-[var(--color-primary)] text-white')
+    : 'theme-surface-elevated theme-text-primary';
+
+  const timestampClass = isOwnMessage ? 'text-white/70' : 'theme-text-secondary';
+
   return (
     <div
       key={index}
       className={`flex mb-3 ${isOwnMessage ? 'justify-end' : 'justify-start'}`}
     >
       <div
-        className={`${
-          isOwnMessage
-            ? isAiMessage
-              ? 'bg-green-500 text-white'
-              : 'bg-[var(--color-primary)] text-white'
-            : 'bg-gray-200 text-black'
-        } rounded-xl px-4 py-2 text-md max-w-xs shadow-sm relative`}
+        className={`${bubbleBase} rounded-xl px-4 py-2 text-md max-w-xs shadow-sm relative`}
       >
         <span>{msg.text || '[Empty message]'}</span>
         {isAiMessage && (
-          <span className="text-[9px] text-gray-200 ml-2">(AI)</span>
+          <span className={`text-[9px] ml-2 ${timestampClass}`}>(AI)</span>
         )}
         {msg.timestamp && (
-          <span className="inline text-[10.5px] ml-2 text-right font-bold">
+          <span className={`inline text-[10.5px] ml-2 text-right font-bold ${timestampClass}`}>
             {new Date(msg.timestamp).toLocaleTimeString([], {
               hour: '2-digit',
               minute: '2-digit',
@@ -217,7 +219,7 @@ function Account() {
           )}
         </div>
 
-        <div className="flex items-center bg-white rounded-lg shadow px-4 py-2">
+        <div className="flex items-center theme-surface rounded-lg shadow px-4 py-2 border theme-border">
           <input
             type="text"
             placeholder="Type your message..."
@@ -229,7 +231,7 @@ function Account() {
                 handleSend();
               }
             }}
-            className="flex-1 px-3 py-2 focus:outline-none rounded-lg border border-gray-300"
+            className="flex-1 px-3 py-2 focus:outline-none rounded-lg border theme-border theme-surface theme-text-primary"
             disabled={!selectedUser || aiMode}
           />
 
