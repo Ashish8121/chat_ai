@@ -3,7 +3,7 @@ import { MagnifyingGlassIcon, TrashIcon, UserCircleIcon } from '@heroicons/react
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 
-function Sidebar({ onUserSelect, selectedUser, activeChats, refreshChats }) {
+function Sidebar({ onUserSelect, selectedUser, activeChats, refreshChats, onOpenProfile }) {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [highlightIndex, setHighlightIndex] = useState(-1); // index of highlighted user
@@ -185,6 +185,7 @@ const handleDeleteChat = async (userId) => {
 <div className="p-3 border-t theme-border">
   <button
     type="button"
+    onClick={onOpenProfile}
     className="w-full flex items-center gap-3 px-3 py-2 rounded-xl border theme-border theme-surface 
                bg-[var(--color-surface)] 
                hover:bg-[var(--color-primary-light)] 

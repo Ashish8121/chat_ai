@@ -4,6 +4,7 @@ import { PaperAirplaneIcon } from '@heroicons/react/24/solid';
 import axios from 'axios';
 import TopBar from './topBar';
 import Sidebar from './sidebar';
+import ProfileModal from './ProfileModal';
 import { useSelector, useDispatch } from 'react-redux';
 import { clearUser } from '../redux/userSlice';
 
@@ -15,6 +16,7 @@ function Account() {
   const [activeChats, setActiveChats] = useState([]);
   const [aiMode, setAiMode] = useState(false);
   const [lastAiRepliedMessageId, setLastAiRepliedMessageId] = useState(null);
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
 
 
   const sendButtonRef = useRef(null);
@@ -153,6 +155,7 @@ function Account() {
         selectedUser={selectedUser}
         activeChats={activeChats}
         refreshChats={fetchActiveChats}
+        onOpenProfile={() => setIsProfileOpen(true)}
       />
 
       <div className="w-[79%] flex flex-col p-3">
@@ -278,6 +281,7 @@ function Account() {
           </div>
         </div>
       </div>
+      <ProfileModal open={isProfileOpen} onClose={() => setIsProfileOpen(false)} user={{ name: useSelector((s)=>s.user.name), email: useSelector((s)=>s.user.email) }} onLogout={handleLogout} />
     </div>
   );
 }
