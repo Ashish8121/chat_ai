@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary theme colors */
+  --color-primary-light: #6ec1e4;
+  --color-primary: #3498db;
+  --color-primary-dark: #2c80b4;
+  --color-secondary-dark: #34495e;
+
+  /* Button styles */
+  --button-bg: var(--color-primary);
+  --button-bg-hover: var(--color-primary-dark);
+  --button-text: white;
+
+  /* You can add more for secondary buttons if needed */
+  --button-secondary-bg: white;
+  --button-secondary-bg-hover: #f1f1f1;
+  --button-secondary-text: var(--color-primary-dark);
+}
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 1s ease forwards;
+}
+
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
